@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir>
+
+echo "-----> Installing Ghostscript 9.20 using build directory $1"
+
+BUILD_DIR=$1
+PACKAGE="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-9.22-linux-x86_64.tgz"
+BINARY="ghostscript-9.22-linux-x86_64/gs-922-linux-x86_64"
+LOCATION="$BUILD_DIR/vendor/gs"
+
+cd $BUILD_DIR
+mkdir -p $LOCATION/bin
+wget -O gs.tgz $PACKAGE
+tar xvf gs.tgz
+mv $BINARY $LOCATION/bin/gs
+
+echo "-----> Building runtime environment for Ghostscript to $LOCATION"
+
+mkdir -p $BUILD_DIR/.profile.d
+echo "export PATH=\"\$HOME/vendor/gs/bin:\$PATH\"" > $BUILD_DIR/.profile.d/ghostscript.sh
