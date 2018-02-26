@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir>
 
-echo "-----> Installing Ghostscript 9.20 using build directory $1"
+echo "-----> Installing Ghostscript 9.22 using build directory $1"
 
 BUILD_DIR=$1
 PACKAGE="https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-9.22-linux-x86_64.tgz"
